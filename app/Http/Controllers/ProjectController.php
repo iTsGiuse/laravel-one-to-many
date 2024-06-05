@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 
+use function PHPSTORM_META\type;
 
 class ProjectController extends Controller
 
@@ -77,9 +79,11 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::findOrFail($id);
-
+        $types = Type::all();
+        
         $data = [
-            'project' => $project
+            'project' => $project,
+            'types'=> $types
         ];
 
         return view('admin.projects.show', $data);
