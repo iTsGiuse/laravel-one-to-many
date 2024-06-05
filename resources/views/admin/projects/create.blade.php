@@ -29,6 +29,18 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
+            <div class="row mb-4">
+                <label for="type_id" class="form-label">Inserisci il tipo</label>
+                <select class="form-select" name="type_id">
+                    <option value="0">Scegli il tipo</option>
+                    @foreach ($types as $type)
+                    <option value="{{$type->id}}">{{$type->name}}</option>
+                    @endforeach
+                </select>
+                @error('type_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
             <div class="row mb-3">
                 <label for="summary" class="form-label">Inserisci la descrizione</label>
                 <textarea class="form-control" id="summary" name="summary" rows="3">{{ old('summary') }}</textarea>

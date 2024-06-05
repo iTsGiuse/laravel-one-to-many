@@ -23,6 +23,5 @@ class TypesTableSeeder extends Seeder
             $newType->slug = Str::slug($newType->name, '-');
             $newType->save();
         }
-        
     }
 }

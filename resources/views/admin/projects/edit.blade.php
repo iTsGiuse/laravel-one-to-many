@@ -24,6 +24,7 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                
                 <div class="row mb-3">
                     <label for="client_name" class="form-label">Inserisci il nome del cliente</label>
                     <input type="text" class="form-control" id="client_name" name="client_name" value="{{old('client_name', $project->client_name)}}">

@@ -38,7 +38,13 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+
+        $data= [
+            'types'=>$types
+        ];
+
+        return view('admin.projects.create', $data);
     }
 
     /**
@@ -164,7 +170,8 @@ class ProjectController extends Controller
                 'name' => 'required|min:5|max:50',
                 'summary' => 'nullable|min:50|max:5000',
                 'client_name' => 'required|min:5|max:50',
-                'image' =>'required'
+                'image' =>'required',
+                'type_id'=>'required'
             ],
             [
                 'name.required' => 'Il titolo è obbligatorio',
@@ -176,7 +183,8 @@ class ProjectController extends Controller
                 'client_name.required' => 'Il nome del cliente è obbligatorio',
                 'client_name.min' => 'Il nome del cliente deve essere composto da almeno cinque caratteri',
                 'client_name.max' => 'Il nome del cliente non può avere più di cinquanta caratteri',
-                'image.required'=>'L\'immagine è obbligatoria'
+                'image.required'=>'L\'immagine è obbligatoria',
+                'type_id.required'=>'Il tipo è obbligatorio'
             ]
         )->validate();
         
