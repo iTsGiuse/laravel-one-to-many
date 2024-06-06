@@ -31,10 +31,10 @@
             </div>
             <div class="row mb-4">
                 <label for="type_id" class="form-label">Inserisci il tipo</label>
-                <select class="form-select" name="type_id">
+                <select class="form-select" id="type_id" name="type_id">
                     <option value="0">Scegli il tipo</option>
                     @foreach ($types as $type)
-                    <option value="{{$type->id}}">{{$type->name}}</option>
+                    <option @selected($type->id == old('type_id')) value="{{$type->id}}">{{$type->name}}</option>
                     @endforeach
                 </select>
                 @error('type_id')

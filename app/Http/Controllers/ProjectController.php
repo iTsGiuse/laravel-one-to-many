@@ -85,11 +85,9 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::findOrFail($id);
-        $types = Type::all();
-        
+     
         $data = [
             'project' => $project,
-            'types'=> $types
         ];
 
         return view('admin.projects.show', $data);

@@ -26,7 +26,7 @@
                             </div>
                         <div class="card-body">
                             <h5 class="card-title my-2">{{$project->name}}</h5>
-                            <p class="card-text my-2">TIPO: {{$project->type->name}}</p>
+                            <p class="card-text my-2">TIPO: {{$project->type ? $project->type->name : 'none'}}</p>
                             <p class="card-text my-2">{{$project->client_name}}</p>
                             <p class="card-text my-2">{{$project->summary}}</p>
                             
