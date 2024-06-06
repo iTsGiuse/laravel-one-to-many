@@ -24,11 +24,22 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                
                 <div class="row mb-3">
                     <label for="client_name" class="form-label">Inserisci il nome del cliente</label>
                     <input type="text" class="form-control" id="client_name" name="client_name" value="{{old('client_name', $project->client_name)}}">
                     @error('client_name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="row mb-4">
+                    <label for="type_id" class="form-label">Inserisci il tipo</label>
+                    <select class="form-select" id="type_id" name="type_id">
+                        <option value="0">Scegli il tipo</option>
+                        @foreach ($types as $type)
+                        <option @selected($type->id == old('type_id', $project->type_id)) value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('type_id')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>

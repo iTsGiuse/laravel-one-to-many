@@ -102,9 +102,11 @@ class ProjectController extends Controller
     public function edit($id)
     {   
         $projects = Project::find($id);
+        $types= Type::all();
 
         $data = [
-            'project' => $projects
+            'project' => $projects,
+            'types'=> $types
         ];
 
         return view('admin.projects.edit', $data);
@@ -137,7 +139,7 @@ class ProjectController extends Controller
         $projectModified-> fill($formData);
         $projectModified-> save();
 
-        return redirect()->route('admin.projects.show', ['project' => $projectModified->slug]);
+        return redirect()->route('admin.projects.show', ['project' => $projectModified->id]);
     }
 
     /**
